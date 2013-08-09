@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface FirstViewController : UIViewController
+#import "NEOColorPickerViewController.h"
+@interface FirstViewController : UIViewController<NEOColorPickerViewControllerDelegate>
 
 @end

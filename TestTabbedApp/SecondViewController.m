@@ -19,6 +19,23 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
+-(IBAction)showPicker:(id)sender {
+    NEOColorPickerViewController *controller = [[NEOColorPickerViewController alloc] init];
+    controller.delegate = self;
+    controller.selectedColor = [UIColor clearColor];
+    controller.title = @"Tint color";
+    UINavigationController* navVC = [[UINavigationController alloc] initWithRootViewController:controller];
+    [self presentViewController:navVC animated:YES completion:nil];
+}
+- (void) colorPickerViewController:(NEOColorPickerBaseViewController *)controller didSelectColor:(UIColor *)color {
+    // Do something with the color.
+    [[UITabBar appearance] setBarTintColor:color];
+    [controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) colorPickerViewControllerDidCancel:(NEOColorPickerBaseViewController *)controller {
+    [controller dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)didReceiveMemoryWarning
 {
